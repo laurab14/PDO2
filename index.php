@@ -7,11 +7,16 @@ include_once 'template/head.php';
 <?php
 include_once 'template/navbar.php';
 ?>
-<button type="button" class="btn btn-outline-success"><a href="ajout-patient.php">Ajout patient</a></button> 
-<?php
+    <div class="container-fluid">
+        <div class="row justify-content-end pt-4">
+        <div class="col-2">
+            <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="ajout-patient.php">Ajout patient</a></button> 
+    </div>
+    </div>
+    </div>
+    <?php
 include_once 'template/cdn.php';
 ?>
-
 </body>
 </html>
 

@@ -1,0 +1,14 @@
+body {
+    background-image : url(/assets/img/woman-3187087_1280.jpg);  
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a{
+    color : white;
+}
+
+a:hover{
+    color:  peachpuff;
+}
