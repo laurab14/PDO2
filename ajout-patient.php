@@ -40,7 +40,19 @@ include_once 'template/head.php';
     <?php
     include_once 'template/navbar.php';
     ?>
-        <div class="col-4 mx-auto pt-4">
+        <div class="container-fluid">
+            <div class="row pt-4">
+                <div class="col-md-3 col-sm-12 pt-3">
+                </div>
+                <div class="col-md-6 col-sm-12 pt-3">
+                    <h1 class="text-center text-white font-weight-bold ">Ajout nouveau patient</h1>
+                </div>
+                <div class="col-md-3 col-sm-12 pt-3 text-right pr-5">
+                    <a class="font-weight-bold" href="index.php"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mx-auto pt-4">
             <div class="card mx-auto" style="width: 18rem;">
         <form action="ajout-patient.php" method="POST">
             <div class="card-header text-center font-weight-bold">

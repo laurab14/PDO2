@@ -61,60 +61,41 @@ if (isset($_GET['search']) AND ! empty($_GET['search'])) {
         include_once 'template/navbar.php';
         ?>
         <div class="container-fluid">
-            <div class="row justify-content-end pt-4">
-                <div class="col-4">
-                    <form action="liste-patient.php" method="GET" class="form-inline justify-content-end">
-                        <input class="form-control mr-sm-2" type="search" name="search"placeholder="Nom du patient" aria-label="Search">
-                        <button class="btn btn-info  my-2 my-sm-0 font-weight-bold" type="submit" name="btnSearch">Recherche</button>
-                    </form>
-                </div>
-                <div class="col-2">
+            <div class="row justify-content-end pt-4 ">
+                <div class="col-md-4 col-sm-12 pl-5">
                     <a class="font-weight-bold" href="ajout-patient.php"><button type="button" class="btn btn-info ajoutPatient">Ajout patient</button></a> 
                 </div>
-            </div>
-            <div class="row justify-content-end pt-4">
-                <div class="col-2">
+                <div class="col-md-4 col-sm-12">
+                    <div class="row">
+                        
+                    <form action="liste-patient.php" method="GET" class="form-inline justify-content-end">
+                        <div class="col-8">
+                        <input class="form-control mr-sm-2" type="search" name="search"placeholder="Nom du patient" aria-label="Search">
+                        </div>
+                        <div class="col-4">
+                        <button class="btn btn-info  my-2 my-sm-0 font-weight-bold" type="submit" name="btnSearch">Recherche</button>
+                        </div>
+                    </form>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 text-right pr-5">
                     <a class="font-weight-bold" href="liste-patient.php"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a>
                 </div>
             </div>
+        </div>
+        
             <h1 class="text-center text-white font-weight-bold pt-4">Liste de vos patients</h1>
+            
+                <?php
+                if (isset($_GET['search']) AND ! empty($_GET['search'])) {
+                    ?>
             <div class="container-fluid">
-                <div class="row mx-auto"> 
-                    <?php
-                    if (!isset($_GET['search']) AND empty($_GET['search'])) { 
-                        ?>
-                    <div class = "col-4 mx-auto">
+                    <div class="row mx-auto">
                         <?php
-                        if ($_GET['page'] > 1) {
+                        while ($donnees = $searchBdd->fetch()) {
                             ?>
-                                <div class="text-center"><a href = "?page=<?php echo $page - 1; ?>">
-                                        <button class = "btn btn-info">Page précédente</button></a></div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                            <?php
-                            for ($pageIndex = 1; $pageIndex <= (ceil($nbPatients / $limite)); $pageIndex++) {
-                                ?>
-                        <a class="font-weight-bold pagination pr-4" href="liste-patient.php?page=<?= $pageIndex ?>"><?= $pageIndex ?></a>
-                                <?php
-                            }
-                            ?>        
-                        <?php
-                        // Nous effectuons une condition pour afficher le bouton suivant
-                        // On calcul le nombre de page grâce à la division du $nbPatients par $limite(limite de patients par pa                            //ge) avec le seil pour l'arrondir au nombre du dessus si il n'est pas un entier.
-                        ?><div class = "col-4 mx-auto"><?php
-                        if ($page < (ceil($nbPatients / $limite))) {
-                            ?>
-
-                                <div class="text-center"><a href = "?page=<?php echo $page + 1; ?>"><button class = "btn btn-info">Page suivante</button></a></div>
-                                <?php
-                            }
-                            ?>
-                        </div><?php
-                        while ($donnees = $reponse->fetch()) {
-                            ?>
-                            <div class="col-4 pt-4 mx-auto">
+                            <div class="col-md-4 col-sm-12 pt-4 mx-auto">
                                 <div class="card mx-auto" style="width: 18rem;">
                                     <div class="card-header text-center font-weight-bold">
                                         Numéro de dossier <?= $donnees['id']; ?> 
@@ -128,69 +109,113 @@ if (isset($_GET['search']) AND ! empty($_GET['search'])) {
                                 </div>
                             </div>
                             <?php
-                            // C'est là qu'on affiche les données  :)
                         }
                         ?> 
-                        <?php
-                    } else {
-                        ?><div class = "col-4 mx-auto">
+                    </div>
+            </div>
+            <div class="container-fluid">
+            <div class="row mx-auto pt-4"> 
+                    <div class = "col-sm-12 col-md-3 mx-auto">
                         <?php
                         if ($_GET['page'] > 1) {
                             ?>
-                                <div class="text-center"><a href = "?page=<?php echo $page - 1; ?>"><button class = "btn btn-info">Page précédente</button></a></div>
-                                —
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <div class="mx-auto">
-                            <?php
-                            for ($pageIndex = 1; $pageIndex <= (ceil($nbPatients / $limite)); $pageIndex++ ) {
-                                ?>
-                            <a class="font-weight-bold pagination" href="liste-patient.php?page=<?=$pageIndex?>"><?=$pageIndex?></a>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <?php
-// Nous effectuons une condition pour afficher le bouton suivant
-// On calcul le nombre de page grâce à la division du $nbPatients par $limite(limite de patients par pa                            //ge) avec le seil pour l'arrondir au nombre du dessus si il n'est pas un entier.
-                        ?><div class = "col-4 mx-auto"><?php
-                        if ($page < (ceil($nbPatients / $limite))) {
-                            ?>
-
-                                <div class="text-center"><a href = "?page=<?php echo $page + 1; ?>"><button class = "btn btn-info">Page suivante</button></a></div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <?php
-                        while ($donnees = $searchBdd->fetch()) {
-                            ?>
-                            <div class = "col-4 pt-4 mx-auto">
-                                <div class = "card mx-auto" style = "width: 18rem;">
-                                    <div class = "card-header text-center font-weight-bold">
-                                        Numéro de dossier <?= $donnees['id'];
-                            ?>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Nom : <?= $donnees['lastname']; ?></li>
-                                        <li class="list-group-item">Prénom : <?= $donnees['firstname']; ?></li>
-                                        <a href="profil-patient.php?id=<?= $donnees['id'] ?>"><div class="bg-info text-center"><button class="button">Profil patient</button></div></a>
-                                        <a href="liste-patient.php?deleteId=<?= $donnees['id'] ?>"><div class="bg-danger text-center"><button class="button">Supprimer dossier</button></div></a>
-                                    </ul>
-                                </div>
-                            </div> 
+                            <div class="text-center"><a href = "?page=<?php echo $page - 1; ?>">
+                                    <button class = "btn btn-info">Page précédente</button></a></div>
                             <?php
                         }
+                        ?>
+                    </div>
+                    <?php
+                    for ($pageIndex = 1; $pageIndex <= (ceil($nbPatients / $limite)); $pageIndex++) {
+                        ?>
+                        <a class="font-weight-bold pagination text-center pr-4" href="liste-patient.php?page=<?= $pageIndex ?>"><?= $pageIndex ?></a>
+                        <?php
+                    }
+                    ?>        
+                    <?php
+                    // Nous effectuons une condition pour afficher le bouton suivant
+                    // On calcul le nombre de page grâce à la division du $nbPatients par $limite(limite de patients par pa                            //ge) avec le seil pour l'arrondir au nombre du dessus si il n'est pas un entier.
+                    ?><div class = "col-md-3 col-sm-12 mx-auto"><?php
+                    if ($page < (ceil($nbPatients / $limite))) {
+                        ?>
+
+                            <div class="text-center"><a href = "?page=<?php echo $page + 1; ?>"><button class = "btn btn-info">Page suivante</button></a></div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                        </div> 
+            </div>
+                    <?php
+                } else {
+                    ?>
+            <div class="container-fluid">
+            <div class="row mx-auto"> 
+                    <?php
+                    while ($donnees = $reponse->fetch()) {
+                        ?>
+                        <div class = "col-md-4 col-sm-12 pt-4 mx-auto">
+                            <div class = "card mx-auto" style = "width: 18rem;">
+                                <div class = "card-header text-center font-weight-bold">
+                                    Numéro de dossier <?= $donnees['id'];
+                        ?>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Nom : <?= $donnees['lastname']; ?></li>
+                                    <li class="list-group-item">Prénom : <?= $donnees['firstname']; ?></li>
+                                    <a href="profil-patient.php?id=<?= $donnees['id'] ?>"><div class="bg-info text-center"><button class="button">Profil patient</button></div></a>
+                                    <a href="liste-patient.php?deleteId=<?= $donnees['id'] ?>"><div class="bg-danger text-center"><button class="button">Supprimer dossier</button></div></a>
+                                </ul>
+                            </div>
+                        </div> 
+                        <?php
                     }
                     ?>
-
-                </div>
             </div>
-            <?php
-            include_once 'template/cdn.php';
-            ?>
+            </div>
+            <div class="container-fluid">
+                        <div class="row pt-4">
+                    <div class = "col-md-4 col-sm-12 pt-3 mx-auto ">
+                        <?php
+                        if ($_GET['page'] > 1) {
+                            ?>
+                        <div class="text-center"><a href = "?page=<?php echo $page - 1; ?>"><button class = "btn btn-info">Page précédente</button></a></div>
+                            —
+                            <?php
+                        }
+                        ?>
+                    </div>
+                     
+                    <?php
+                    for ($pageIndex = 1; $pageIndex <= (ceil($nbPatients / $limite)); $pageIndex++) {
+                        ?>
+                        <a class="font-weight-bold pagination pr-4 text-center" href="liste-patient.php?page=<?= $pageIndex ?>"><?= $pageIndex ?></a>
+                        <?php
+                    }
+                    ?>
+                    <?php
+// Nous effectuons une condition pour afficher le bouton suivant
+// On calcul le nombre de page grâce à la division du $nbPatients par $limite(limite de patients par pa                            //ge) avec le seil pour l'arrondir au nombre du dessus si il n'est pas un entier.
+                    ?><div class = "col-md-4 col-sm-12 mx-auto "><?php
+                    if ($page < (ceil($nbPatients / $limite))) {
+                        ?>
+
+                        <div class="text-center pt-3"><a href = "?page=<?php echo $page + 1; ?>"><button class = "btn btn-info">Page suivante</button></a></div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                        </div>
+            </div>
+                    <?php
+                }
+                
+                ?>
+                       
+            </div>
+        <?php
+        include_once 'template/cdn.php';
+        ?>
 
     </body>
 </html>

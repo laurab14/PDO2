@@ -24,15 +24,17 @@ $profilRequest->execute();
         include_once 'template/navbar.php';
         ?>
         <div class="container-fluid">
-            <div class="row justify-content-end pt-4">
-                <div class="col-2">
+            <div class="row pt-4">
+                <div class="col-3"></div>
+                <div class="col-6 text-center"><h1 class="text-center text-white font-weight-bold">Profil patient</h1></div>
+                <div class="col-3 text-right pr-5">
                     <a class="font-weight-bold" href="liste-patient.php"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a>
                 </div>
             </div>
         </div>  
-        <h1 class="text-center text-white font-weight-bold pt-4">Profil patient</h1>
+
         <div class="container-fluid">
-        <div class="row">
+        <div class="row pt-5">
             <?php
             while ($donnees = $profilRequest->fetch()) {
     ?>

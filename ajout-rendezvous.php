@@ -11,8 +11,8 @@ if (isset($_POST['ajoutRDV'])) {
 //je crée des variables pour récupérer la valeur des POST
     $dateHour = $_POST['dateHour'];
     $idPatients = $_POST['idPatients'];
- 
- 
+
+
     // on prepare la requete $addRDV à l'aide de marqueur nominatif de la forme :marqeur
     $addRDV = $bdd->prepare("INSERT INTO `appointments` (dateHour, idPatients) VALUES (:dateHour, :idPatients)");
 
@@ -32,7 +32,19 @@ if (isset($_POST['ajoutRDV'])) {
         <?php
         include_once 'template/navbar.php';
         ?>
-        <div class="col-4 mx-auto pt-4">
+        <div class="container-fluid">
+            <div class="row pt-4">
+                <div class="col-md-3 col-sm-12 pt-3">
+                </div>
+                <div class="col-md-6 col-sm-12 pt-3">
+                    <h1 class="text-center text-white font-weight-bold ">Ajout rendez-vous</h1>
+                </div>
+                <div class="col-md-3 col-sm-12 pt-3 text-right pr-5">
+                    <a class="font-weight-bold" href="index.php"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mx-auto pt-4">
             <div class="card mx-auto" style="width: 18rem;">
                 <form action="ajout-rendezvous.php" method="POST">
                     <div class="card-header text-center font-weight-bold">
@@ -43,7 +55,7 @@ if (isset($_POST['ajoutRDV'])) {
                         <li class="list-group-item"><label for="dateHour">Date et heure du RDV :<input type="text" name="dateHour" value="2019-01-01 13:00:00" /></label></li>
                         <button type="submit" name="ajoutRDV" class="button bg-info" >Valider</button>
                     </ul>
-                    
+
                 </form>
             </div>
         </div>

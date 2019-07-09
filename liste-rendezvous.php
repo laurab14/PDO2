@@ -27,20 +27,25 @@ if (isset($_GET['deleteId'])) {
         include_once 'template/navbar.php';
         ?>
         <div class="container-fluid">
-            <div class="row justify-content-end pt-4">
-                <div class="col-3">
-                    <a class="font-weight-bold" href="ajout-rendezvous.php"><button type="button" class="btn btn-info ajoutPatient">Nouveau Rendez-vous</button></a>
+            <div class="row pt-4">
+                <div class="col-md-3 col-sm-12 pt-3 pl-5">
+                    <a class="font-weight-bold " href="ajout-rendezvous.php"><button type="button" class="btn btn-info ajoutPatient ">Nouveau Rendez-vous</button></a>
                 </div>
-            </div>
-        </div>
-        <h1 class="text-center text-white font-weight-bold pt-4">Liste RDV</h1>
+                <div class="col-md-6 col-sm-12 pt-3">
+                    <h1 class="text-center text-white font-weight-bold ">Liste des rendez-vous</h1>
+                </div>
+                <div class="col-md-3 col-sm-12 pt-3 text-right pr-5">
+                    <a class="font-weight-bold" href="index.php"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a> 
+                </div>
 
+            </div>
+        </div> 
         <div class="container-fluid">
             <div class="row">
                 <?php
                 while ($donnees = $listeRDV->fetch()) {
                     ?>
-                    <div class="col-4 pt-4">
+                    <div class="col-md-4 col-sm-12 pt-4">
                         <div class="card mx-auto" style="width: 18rem;">
                             <div class="card-header text-center font-weight-bold">
                                 Numéro de dossier <?= $donnees['idPatients']; ?>

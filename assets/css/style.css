@@ -31,3 +31,7 @@ a:hover{
 .pagination{
     font-size: 1.5rem;
 }
+
+h1, .pagination{
+    text-shadow: 2px 0 0 #81ae9d, -2px 0 0 #81ae9d, 0 2px 0 #81ae9d, 0 -2px 0 #81ae9d, 1px 1px #81ae9d, -1px -1px 0 #81ae9d, 1px -1px 0 #81ae9d, -1px 1px 0 #81ae9d;
+}
