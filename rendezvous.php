@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row justify-content-end pt-4">
                 <div class="col-3">
-                    <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="ajout-rendezvous.php">Nouveau Rendez-vous</a></button> 
+                    <a class="font-weight-bold" href="ajout-rendezvous.php"><button type="button" class="btn btn-info ajoutPatient">Nouveau Rendez-vous</button></a>
                 </div>
             </div>
         </div>
@@ -46,8 +46,8 @@ while ($donnees = $rdvInfo->fetch()) {
                                 <p class="text-center font-weight-bold ">Contact</p>
                                 <li class="list-group-item">Téléphone : <?= $donnees['phone']; ?></li>     
                                 <li class="list-group-item">Mail : <?= $donnees['mail']; ?></li>     
+                                <a href="modification-rendezvous.php?id=<?= $_GET['id'] ?>"><div class="bg-info text-center"><button class="button">Modifier RDV</button></div></a>
                             </ul>
-                            <button class="bg-info"><a href="modification-rendezvous.php?id=<?= $_GET['id']?>">Modifier RDV</a></button>
                         </div>
                         <p></p>
                     </div>

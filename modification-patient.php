@@ -46,7 +46,7 @@ $profilRequest->execute();
         <div class="container-fluid">
             <div class="row justify-content-end pt-4">
                 <div class="col-2">
-                    <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="profil-patient.php?id=<?= $_GET['id'] ?>">Retour</a></button> 
+                    <a class="font-weight-bold" href="profil-patient.php?id=<?= $_GET['id'] ?>"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a>
                 </div>
             </div>
         </div> 
@@ -67,8 +67,8 @@ $profilRequest->execute();
                         <li class="list-group-item"><label for="birthDate">Date de naissance : <input type="date" name="birthDate" value="<?= $donnees['birthdate']; ?>"/></label></li>
                         <li class="list-group-item"><label for="phone">Télephone : <input type="text" name="phone" value="<?=$donnees['phone'];?>"/></label></li>
                         <li class="list-group-item"><label for="mail">Adresse mail : <input type="mail" name="mail" value="<?= $donnees['mail']; ?>"/></label></li>
+                        <button  class="bg-info" type="submit" name="modify">Valider</button>
                     </ul>
-                    <button  class="bg-info" type="submit" name="modify">Valider</button>
                     </form>
                 </div>
             </div>

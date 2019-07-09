@@ -41,8 +41,9 @@ if (isset($_POST['ajoutRDV'])) {
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><label for="idPatients">Numéro patient : <input type="text" name="idPatients" /></label></li>
                         <li class="list-group-item"><label for="dateHour">Date et heure du RDV :<input type="text" name="dateHour" value="2019-01-01 13:00:00" /></label></li>
+                        <button type="submit" name="ajoutRDV" class="button bg-info" >Valider</button>
                     </ul>
-                    <button class="bg-info" type="submit" name="ajoutRDV">Valider</button>
+                    
                 </form>
             </div>
         </div>

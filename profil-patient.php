@@ -7,6 +7,7 @@ try {
 }
 ?>
 <?php
+setlocale(LC_TIME, "fr_FR.utf8","fra");
 // Préparation de la requête avec le marquer nominatif :id
 $profilRequest = $bdd->prepare("SELECT * FROM `patients` WHERE id= :id");
 // attribution de la valeur de :id qui sera récupéré par un GET via les param d'URL ex. "...?id="
@@ -25,7 +26,7 @@ $profilRequest->execute();
         <div class="container-fluid">
             <div class="row justify-content-end pt-4">
                 <div class="col-2">
-                    <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="liste-patient.php">Retour</a></button> 
+                    <a class="font-weight-bold" href="liste-patient.php"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a>
                 </div>
             </div>
         </div>  
@@ -43,11 +44,11 @@ $profilRequest->execute();
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Nom : <?= $donnees['lastname']; ?></li>
                             <li class="list-group-item">Prénom : <?= $donnees['firstname']; ?></li>
-                            <li class="list-group-item">Date de naissance : <?= $donnees['birthdate']; ?></li>
+                            <li class="list-group-item">Date de naissance : <?= strftime('%d/%m/%Y',strtotime($donnees['birthdate'])); ?></li>
                             <li class="list-group-item">Téléphone : <?= $donnees['phone']; ?></li>
                             <li class="list-group-item">Mail : <?= $donnees['mail']; ?></li>
+                            <a href="modification-patient.php?id=<?= $donnees['id'] ?>"><div class="bg-info text-center"><button class="button">Modifier</button></div></a>
                         </ul>
-                        <button  class="bg-info"><a href="modification-patient.php?id=<?= $donnees['id'] ?>">Modifier</a></button>
                     </div>
                 </div>
                 <?php
@@ -69,7 +70,9 @@ while ($donnees = $rdvInfo->fetch()) {
                         </div>
                         <ul class="list-group list-group-flush">
                         
-                            <li class="list-group-item">Date et Heure du RDV : <?= $donnees['dateHour']; ?></li>                           
+                            <li class="list-group-item">Date et Heure du RDV :  </li>
+                            <li class="list-group-item">Le <?= ucfirst(strftime('%A %d %B %Y' .' à '. '%k:%M', strtotime($donnees['dateHour']))); ?></li>           
+                        </ul>
                     </div>
                     <p></p>
                 </div>

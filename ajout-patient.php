@@ -52,8 +52,9 @@ include_once 'template/head.php';
                 <li class="list-group-item"><label for="birthDate">Date de naissance : <input type="date" name="birthDate" /></label></li>
                 <li class="list-group-item"><label for="phone">Télephone : <input type="text" name="phone" /></label></li>
                 <li class="list-group-item"><label for="mail">Adresse mail : <input type="mail" name="mail" /></label></li>
+                <button type="submit" name="ajout" class="button bg-info" >Valider</button>
             </ul>
-            <div class="align-content-right"><button class="bg-info" type="submit" name="ajout">Valider</button></div>
+            
         </form>
     </div>
 </div>

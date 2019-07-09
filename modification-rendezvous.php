@@ -41,7 +41,7 @@ $rdvRequest->execute();
         <div class="container-fluid">
             <div class="row justify-content-end pt-4">
                 <div class="col-2">
-                    <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="rendezvous.php?id=<?= $_GET['id'] ?>">Retour</a></button> 
+                    <a class="font-weight-bold" href="rendezvous.php?id=<?= $_GET['id'] ?>"><button type="button" class="btn btn-info ajoutPatient">Retour</button></a> 
                 </div>
             </div>
         </div> 
@@ -59,8 +59,8 @@ $rdvRequest->execute();
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item"><label for="dateHour">Date et heure : <input type="text" name="dateHour" value="<?= $donnees['dateHour']; ?>"/></label></li>
                                     <li class="list-group-item"><label for="idPatients">Numéro patient : <input type="text" name="idPatients" value="<?= $donnees['idPatients']; ?>"/></label></li>
+                                    <button  class="bg-info" type="submit" name="modifyRDV">Valider</button>
                                 </ul>
-                                <button  class="bg-info" type="submit" name="modifyRDV">Valider</button>
                             </form>
                         </div>
                     </div>

@@ -15,9 +15,9 @@ if (isset($_GET['deleteId'])) {
     if ($deleteRDV->execute()) {
         header('Location: liste-rendezvous.php');
     }
-    }
+}
 ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
     <?php
     include_once 'template/head.php';
@@ -29,7 +29,7 @@ if (isset($_GET['deleteId'])) {
         <div class="container-fluid">
             <div class="row justify-content-end pt-4">
                 <div class="col-3">
-                    <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="ajout-rendezvous.php">Nouveau Rendez-vous</a></button> 
+                    <a class="font-weight-bold" href="ajout-rendezvous.php"><button type="button" class="btn btn-info ajoutPatient">Nouveau Rendez-vous</button></a>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ if (isset($_GET['deleteId'])) {
         <div class="container-fluid">
             <div class="row">
                 <?php
-            while ($donnees = $listeRDV->fetch()) {
+                while ($donnees = $listeRDV->fetch()) {
                     ?>
                     <div class="col-4 pt-4">
                         <div class="card mx-auto" style="width: 18rem;">
@@ -48,10 +48,10 @@ if (isset($_GET['deleteId'])) {
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Nom : <?= $donnees['lastname']; ?></li>
                                 <li class="list-group-item">Prénom : <?= $donnees['firstname']; ?></li>
-                                <li class="list-group-item">Date et Heure du RDV : <?= $donnees['dateHour']; ?></li>     
+                                <li class="list-group-item">Date et Heure du RDV : <?= $donnees['dateHour']; ?></li> 
+                                <a href="rendezvous.php?id=<?= $donnees['id'] ?>"><div class="bg-info text-center"><button class="button">Voir plus</button></div></a>
+                                <a href="liste-rendezvous.php?deleteId=<?= $donnees['id'] ?>"><div class="bg-danger text-center"><button class="button">Supprimer RDV</button></div></a>
                             </ul>
-                            <button class="bg-info"><a href="rendezvous.php?id=<?= $donnees['id'] ?>">Voir plus</a></button>
-                            <button class="bg-danger"><a href="liste-rendezvous.php?deleteId=<?= $donnees['id'] ?>">Supprimer RDV</a></button>
                         </div>
                         <p></p>
                     </div>

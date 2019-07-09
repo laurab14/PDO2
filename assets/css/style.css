@@ -12,3 +12,22 @@ a{
 a:hover{
     color:  peachpuff;
 }
+
+.button{
+    background-color: transparent;
+    border: none;
+    color : white;
+}
+
+.button:hover{
+    color : #81ae9d;
+}
+
+.card-header{
+    background-color: #406f77;
+    color : white;
+}
+
+.pagination{
+    font-size: 1.5rem;
+}

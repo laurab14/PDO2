@@ -10,7 +10,7 @@ include_once 'template/navbar.php';
     <div class="container-fluid">
         <div class="row justify-content-end pt-4">
         <div class="col-2">
-            <button type="button" class="btn btn-info ajoutPatient"><a class="font-weight-bold" href="ajout-patient.php">Ajout patient</a></button> 
+            <a class="font-weight-bold" href="ajout-patient.php"><button type="button" class="btn btn-info ajoutPatient">Ajout patient</button></a>
     </div>
     </div>
     </div>
